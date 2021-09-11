@@ -2,9 +2,9 @@ import { useState } from "react"
 
 const ToDoButton=()=>{
     const[inputText,setInputText]=useState('')
-    const[displayText,setDisplayText]=useState('')
+    const[toDoList,setToDoList]=useState([])
     const onButtonClick=()=>{
-        setDisplayText(inputText)
+        setToDoList([...toDoList,inputText])
         setInputText('')
     }
     const listenToText=(event)=>{
@@ -14,7 +14,9 @@ const ToDoButton=()=>{
         <div>
             <input type="text" onChange={listenToText} value={inputText}></input>
             <button onClick={onButtonClick}>Click</button>
-            {displayText.length!==0&&<div>{displayText}</div>}
+            <div><ul>{toDoList.map(todo=>{
+                    return <li>{todo}</li>
+            })}</ul></div>
         </div>
     )
 }
