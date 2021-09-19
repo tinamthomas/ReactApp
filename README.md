@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-More updates
+More updates and more and more updates
 
 ### `npm start`
 
