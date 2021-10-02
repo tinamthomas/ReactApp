@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import ToDoItem from "./todoItem"
 const ToDoButton=()=>{
     const[inputText,setInputText]=useState('')
     const[toDoList,setToDoList]=useState([])
@@ -15,7 +15,7 @@ const ToDoButton=()=>{
             <input type="text" onChange={listenToText} value={inputText}></input>
             <button onClick={onButtonClick}>Click</button>
             <div><ul>{toDoList.map(todo=>{
-                    return <li>{todo}</li>
+                    return <ToDoItem todo={todo}></ToDoItem>
             })}</ul></div>
         </div>
     )
