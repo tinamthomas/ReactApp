@@ -10,12 +10,16 @@ const ToDoButton=()=>{
     const listenToText=(event)=>{
        setInputText(event.target.value)
     }
+    const updateItemAtElementAt = (index) => (newItem) => {
+        const newState = [... toDoList.slice(0, index), newItem, ... toDoList.slice(index+1)];
+        setToDoList(newState);
+    }
     return(
         <div>
             <input type="text" onChange={listenToText} value={inputText}></input>
             <button onClick={onButtonClick}>Click</button>
-            <div><ul>{toDoList.map(todo=>{
-                    return <ToDoItem todo={todo}></ToDoItem>
+            <div><ul>{toDoList.map((todo, index)=>{
+                    return <ToDoItem todo={todo} updateItem={updateItemAtElementAt(index)}></ToDoItem>
             })}</ul></div>
         </div>
     )

@@ -3,7 +3,6 @@ import { useState } from "react";
 const ToDoItem=(props)=>{
     const [checked,setChecked]=useState(false);
     const[isEditing,setIsEditing]=useState(false)
-    const [currentItem,setCurrentItem]=useState(props.todo)
     function updateCheck(){
         setChecked(!checked);
     }
@@ -12,7 +11,7 @@ const ToDoItem=(props)=>{
         setIsEditing(!isEditing);
     }
     function changeItem(event){
-        setCurrentItem(event.target.value);
+        props.updateItem(event.target.value);
     }
     return(
         <div>
@@ -20,8 +19,8 @@ const ToDoItem=(props)=>{
        {checked?
        <del><label>{props.todo}</label></del>:
        !isEditing?
-                <label>{currentItem}</label>:
-                <input type="text" value={currentItem} onChange={changeItem}></input>}
+                <label>{props.todo}</label>:
+                <input type="text" value={props.todo} onChange={changeItem}></input>}
        
         <input type="button" value={isEditing?"Save":"Edit"} onClick={editList}></input>
         </div>
