@@ -3,8 +3,10 @@ import Form from "./Form";
 
 const RenderForm=()=>{
     const [name,setName]=useState("Hello")
-    const handlerCallBack=(name)=>{
-        setName(name)
+    const [age,setAge]=useState("12")
+    const handlerCallBack=(object)=>{
+        setName(object.name)
+        setAge(object.age)
         setIsForm(false)
     }
     const [isForm,setIsForm]=useState(false)
