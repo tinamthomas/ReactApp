@@ -6,7 +6,6 @@ const MovieTable=(props)=>{
         <table border="1">
             <tbody>
             {props.tableDetails.map((movie,index)=>
-
             !isEdit?
                 <tr key={"movie-"+index}>
                     <td>{movie.movieName}</td>
