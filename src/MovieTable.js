@@ -1,11 +1,18 @@
-import { useState } from "react"
-const MovieTable=(props)=>{
+import { useState, useEffect } from "react"
+import * as axios from "axios";
+
+const MovieTable=()=>{
     const [isEdit,setIsEdit]=useState(false)
+    const [movies, setMovies] = useState([]);
+    useEffect(async () => {
+        const result = await axios.get('http://localhost:3004/movies')
+        setMovies(result.data);
+      }, []);
     return(
         
         <table border="1">
             <tbody>
-            {props.tableDetails.map((movie,index)=>
+            {movies.map((movie,index)=>
             !isEdit?
                 <tr key={"movie-"+index}>
                     <td>{movie.movieName}</td>
