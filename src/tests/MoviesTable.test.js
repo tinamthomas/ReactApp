@@ -15,10 +15,11 @@ test("Render Movies table",async()=>{
     expect(columns[5]).toHaveTextContent("Edit")
 
 })
-
 test("On Clicking edit get save button",async()=>{
     const tableDetails=[{movieName:"Harry Potter",rating:"10"}]
+    
     render(<MovieTable tableDetails={tableDetails}></MovieTable>)
+
     fireEvent.click(screen.getByRole("button"))    
     const buttons=screen.getAllByRole("button")
     expect(buttons).toHaveLength(2)
