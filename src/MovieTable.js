@@ -1,12 +1,11 @@
 import { useState } from "react"
-const MovieTable=()=>{
+const MovieTable=(props)=>{
     const [isEdit,setIsEdit]=useState(false)
-    const [tableDetails,setTableDetails]=useState([{movieName:"Harry Potter",rating:"10"},{movieName:"Back to the future",rating:"10"}])
     return(
-       
+        
         <table border="1">
             <tbody>
-            {tableDetails.map((movie,index)=>
+            {props.tableDetails.map((movie,index)=>
 
             !isEdit?
                 <tr key={"movie-"+index}>
@@ -14,7 +13,7 @@ const MovieTable=()=>{
                     <td>{movie.rating}</td>
                     <td><button onClick={()=>{setIsEdit(true)}}>Edit</button></td>
                 </tr>:
-                 <tr>
+                 <tr key={"movie-Edit"+index}>
                  <td><input defaultValue={movie.movieName}></input></td>
                  <td><input defaultValue={movie.rating}></input></td>
                  <td>
