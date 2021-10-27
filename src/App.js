@@ -1,16 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-import ToDoButton from './ToDoButton';
-import Form from './Form';
 import RenderForm from './RenderForm';
+import Keycloak from 'keycloak-js';
+import { useState, useEffect } from "react";
 function App() {
-  return (<>
-   {/* <ToDoButton></ToDoButton>
-   <Form></Form> */}
+  const keycloakService = Keycloak('./keycloak.json');
+  const [authenticated, setAuthenticated] = useState(false);
+  const [keycloak, setKeycloak] = useState(null);
+  useEffect(async () => {
+    keycloakService.init({onLoad: 'login-required'}).then(authenticated => {
+      setAuthenticated(authenticated);
+      setKeycloak(keycloakService) //WEIRD 
+    })
+  }, []);
 
-   <RenderForm></RenderForm>
-    </>
-  );
+  if(authenticated) {
+    return (<>
+      <RenderForm></RenderForm>
+      <div onClick={()=> keycloak.logout({ redirectUri: 'http://localhost:3000/' })}>Logout</div>
+       </>
+     );
+  }
+  else {
+    return <div>unauthenticated</div>
+  }
+
 }
 
 export default App;
