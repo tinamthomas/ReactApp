@@ -1,6 +1,6 @@
-const SignIn=(props)=>{
+const SignIn=()=>{
     return (
-        <div>I need to sign in</div>
+        <div>You need to sign in</div>
     )
 }
 export default SignIn;
