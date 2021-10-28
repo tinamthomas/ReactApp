@@ -4,5 +4,6 @@
   "ssl-required": "external",
   "resource": "my-react-app",
   "public-client": true,
-  "confidential-port": 0
+  "confidential-port": 0,
+  "redirectUri": "http://localhost:3000/signin"
 }

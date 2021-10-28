@@ -3,7 +3,7 @@ import Form from "./Form";
 
 const RenderForm=()=>{
     const [name,setName]=useState("Hello")
-    const [age,setAge]=useState("12")
+    const [,setAge]=useState("12")
     const handlerCallBack=(object)=>{
         setName(object.name)
         setAge(object.age)
